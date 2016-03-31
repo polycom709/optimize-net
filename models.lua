@@ -435,19 +435,20 @@ models.alexnet = function()
   features:add(fb2)
 
   -- 1.3. Create Classifier (fully connected layers)
-  local classifier = nn.Sequential()
-  classifier:add(nn.View(256*6*6))
-  --classifier:add(nn.Dropout(0.5))
-  classifier:add(nn.Linear(256*6*6, 4096))
-  classifier:add(nn.Threshold(0, 1e-6))
-  --classifier:add(nn.Dropout(0.5))
-  classifier:add(nn.Linear(4096, 4096))
-  classifier:add(nn.Threshold(0, 1e-6))
-  classifier:add(nn.Linear(4096, 1000))
-  classifier:add(nn.LogSoftMax())
+--  local classifier = nn.Sequential()
+--  classifier:add(nn.View(256*6*6))
+--  --classifier:add(nn.Dropout(0.5))
+--  classifier:add(nn.Linear(256*6*6, 4096))
+--  classifier:add(nn.Threshold(0, 1e-6))
+--  --classifier:add(nn.Dropout(0.5))
+--  classifier:add(nn.Linear(4096, 4096))
+--  classifier:add(nn.Threshold(0, 1e-6))
+--  classifier:add(nn.Linear(4096, 1000))
+--  classifier:add(nn.LogSoftMax())
 
   -- 1.4. Combine 1.1 and 1.3 to produce final model
-  local model = nn.Sequential():add(features):add(classifier)
+--  local model = nn.Sequential():add(features):add(classifier)
+  local model = nn.Sequential():add(features)
   model.imageSize = 256
   model.imageCrop = 224
 
