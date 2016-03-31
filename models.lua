@@ -1,4 +1,7 @@
 require 'nn'
+require 'dpnn'
+require 'torch'
+require 'optim'
 
 local models = {}
 models.basic_parallel = function()
