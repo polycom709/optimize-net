@@ -16,6 +16,20 @@ models.basic_parallel = function()
 end
 
 -------------------------------
+models.basic_p2 = function()
+  local m = nn.Sequential()
+  local prl = nn.ParallelTable()
+  prl:add(nn.Linear(2,2))
+  prl:add(nn.Sequential():add(nn.Linear(2,1)):add(nn.Sigmoid()):add(nn.Linear(1,1)))
+  m:add(prl)
+  m:add(nn.JoinTable(2))
+  m:add(nn.Linear(3,2))
+  m:add(nn.ReLU(true))
+
+  local input = {torch.rand(2,2), torch.rand(2,2)}
+  return m, input
+end
+
 -------------------------------
 
 models.basic_conv = function()
