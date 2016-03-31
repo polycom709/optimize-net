@@ -281,10 +281,16 @@ models.face_p3 = function()
    -- Validate shape with:
    -- net:add(nn.Reshape(736))
 
-   net:add(nn.View(736))
+--   net:add(nn.View(736))
+--   --net:add(nn.Linear(736, opt.embSize))
+--   net:add(nn.Linear(736, 128))
+--   net:add(nn.Normalize(2))
+
+   net:add(nn.View(19200))
    --net:add(nn.Linear(736, opt.embSize))
-   net:add(nn.Linear(736, 128))
+   net:add(nn.Linear(19200, 128))
    net:add(nn.Normalize(2))
+
 
    --return net
    local input = torch.rand(1,3,96,96)
