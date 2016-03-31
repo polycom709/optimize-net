@@ -156,7 +156,7 @@ models.face_p2 = function()
 
    net:add(nn.View(736))
    --net:add(nn.Linear(736, opt.embSize))
-   net:add(nn.Linear(736, 158))
+   net:add(nn.Linear(736, 128))
    net:add(nn.Normalize(2))
 
    --return net
